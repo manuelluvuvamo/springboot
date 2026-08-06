@@ -1,6 +1,8 @@
 package com.example.projectoapi.model;
 
+// POJO -> Plain Old java OBject
 public class Produto {
+
     private String id;
     private String nome;
     private String descricao;
