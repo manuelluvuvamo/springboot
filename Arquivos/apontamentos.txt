@@ -46,3 +46,23 @@ CONFIGURAÇÃO BD EM MEMÓRIA - H2:
 CRIAÇÃO DE REPOSITORY:
 
 public interface ProdutoRepository extends JpaRepository<TABELA, TIPO_ID> {
+
+}
+
+
+BEAN = Componentes configurados uma só vez e usados várias vezes na aplicação (Injeção de Dependência): Singleton,
+Faz-se a injeção com @Autowired e torna-se componente com @Configuration e na classe que se retorna nessa configuration usa-se @Bean
+
+QUALIFIERS
+@Qualifier("motorTurbo") => serve para identificar o Bean que queremos injectar quando temos configurados vários Beans do mesmo Tipo
+
+
+BEANS PRIMARY && ANOTATIONS DE QUALIFIERS
+@Primary => Definir o @Bean Primário de uma confguração com vários Beans do mesmo tipo e sem @Qualifier
+É possível criar Anotations personalizado para Beans/Qualifiers existentes:
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.METHOD})
+@Qualifier("motorAspirado")
+public @interface Aspirado {
+}
