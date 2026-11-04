@@ -66,3 +66,7 @@ BEANS PRIMARY && ANOTATIONS DE QUALIFIERS
 @Qualifier("motorAspirado")
 public @interface Aspirado {
 }
+
+
+
+@GeneratedValue(strategy =  GenerationType.IDENTITY) => fazer com que a BD gere os valores de um campo como ID automaticamente
