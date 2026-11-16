@@ -1,6 +1,10 @@
 package com.manuelluvuvamo.arquiteturaspring.todos;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("todos")
@@ -14,16 +18,28 @@ public class TodoController {
 
     @PostMapping
     public TodoEntity salvar(@RequestBody TodoEntity novoTodo){
-        return service.salvar(novoTodo);
+        try {
+            return service.salvar(novoTodo);
+        } catch (IllegalArgumentException e) {
+            var mensagemErro = e.getMessage();
+            throw  new ResponseStatusException(HttpStatus.CONFLICT, mensagemErro);
+        }
+
     }
 
-    @GetMapping
-    public TodoEntity buscar(@RequestParam Integer id){
-        return service.buscar(id);
+    @GetMapping("{id}")
+    public TodoEntity buscar(@PathVariable("id") Integer id){
+        return service.buscarPorId(id);
     }
 
     @PutMapping
     public TodoEntity atualizar(@RequestParam Integer id, @RequestBody TodoEntity todo){
         return service.atualizar(id, todo);
+    }
+
+    @PutMapping("{id}")
+    public void atualizarStatus(@PathVariable("id") Integer id, @RequestBody TodoEntity todo) {
+        todo.setId(id);
+        service.atualizarStatus(todo);
     }
 }

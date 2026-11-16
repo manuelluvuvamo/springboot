@@ -14,7 +14,7 @@ public class TodoEntity {
     private String descricao;
 
     @Column(name = "fl_concluido")
-    private Boolean concluido;
+    private Boolean concluido = false;
 
     public Integer getId() {
         return id;

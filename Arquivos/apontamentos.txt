@@ -70,3 +70,7 @@ public @interface Aspirado {
 
 
 @GeneratedValue(strategy =  GenerationType.IDENTITY) => fazer com que a BD gere os valores de um campo como ID automaticamente
+
+Uma annotation (anotação) no Spring Boot (e no Java) é uma forma de adicionar metadados ao código-fonte. Ela começa com o símbolo de arroba (@) e serve para dar instruções diretas ao framework sobre como tratar uma classe, método, campo ou parâmetro, eliminando a necessidade de arquivos de configuração complexos em XML
+
+
